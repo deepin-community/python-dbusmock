@@ -1,0 +1,502 @@
+python-dbusmock (0.24.1-1) unstable; urgency=medium
+
+  * New upstream version 0.24.1:
+    - Do not register standard D-Bus service directories
+      (Thanks Benjamin Berg)
+    - templates: Add IIO Sensors Proxy support (Thanks Marco Trevisan)
+    - Fix importlib module import (Thanks Marco Trevisan)
+    - Clean up code for most recent pylint version
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 27 Oct 2021 16:28:46 +0200
+
+python-dbusmock (0.24.0-1) unstable; urgency=medium
+
+  * New upstream version 0.24.0:
+    - Add power-profiles-daemon template (Thanks Bastien Nocera)
+    - logind: Implement Inhibit and ListInhibitors (Thanks to Benjamin Berg)
+    - Fix new complaints from pylint 2.9
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 28 Aug 2021 08:47:11 +0200
+
+python-dbusmock (0.23.1-2) unstable; urgency=medium
+
+  * Declare "Rules-Requires-Root: no"
+  * Bump Standards-Version to 4.6.0. No changes necessary.
+  * Update to debhelper compat level 13
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 23 Aug 2021 09:21:59 +0200
+
+python-dbusmock (0.23.1-1) experimental; urgency=medium
+
+  * New upstream version 0.23.1:
+    - Fix tests for Python 3.10
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 15 Jun 2021 09:41:50 +0200
+
+python-dbusmock (0.23.0-1) experimental; urgency=medium
+
+  * New upstream version 0.23.0:
+    - DBusMockObject: Add UpdateProperties() method (Thanks to Jonas Ådahl)
+    - DBusTestCase: Add bus override argument to spawn_server_template, to use
+      templates on either system or session bus; add corresponding --session
+      CLI option
+    - bluez template: Implement Pair() method on the Device interface and the
+    - AgentManager1 interface (Thanks to Bastien Nocera)
+    - polkit template: Implement RegisterAuthenticationAgent() (Thanks to
+      Jonas Ådahl)
+    - Add accountsservice template (Thanks to Marco Trevisan)
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 25 Mar 2021 07:08:19 +0100
+
+python-dbusmock (0.22.0-1) unstable; urgency=medium
+
+  * New upstream version 0.22.0:
+    - NetworkManager template: Fix connecting to wifi
+    - NetworkManager template: Add Reload() method
+    - tests: Replace nose test runner with standard unittest
+    - setup.py: Drop deprecated test_suite, run tests through
+      python3 -m unittest directly
+  * Drop obsolete python3-nose build dependency.
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 02 Jan 2021 17:46:45 +0100
+
+python-dbusmock (0.21.0-1) unstable; urgency=medium
+
+  * New upstream version 0.21.0:
+    - Add type annotations to the whole API
+    - Drop obsolete ConsoleKit and bluez4 templates/tests
+    - upower template: Drop support for 0.9 API
+  * Bump Standards-Version to 4.5.1.  No changes necessary.
+  * debian/tests: Drop long-obsolete systemd-services test dependency
+    alternative.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 01 Jan 2021 13:08:14 +0100
+
+python-dbusmock (0.20.0-1) unstable; urgency=medium
+
+  [ Martin Pitt ]
+  * New upstream version 0.20.0:
+    - NetworkManager template: Handle NetworkingEnable
+    - NetworkManager template: AddConnectionUnsaved
+    - Drop support for Python 2
+
+  [ Debian Janitor ]
+  * Wrap long lines in changelog entries: 0.19-1.
+  * Bump debhelper from old 10 to 12.
+  * Set field Upstream-Name in debian/copyright.
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+  * Use canonical URL in Vcs-Git.
+  * Update standards version to 4.5.0, no changes needed.
+  * Update watch file format version to 4.
+    Changes-By: lintian-brush
+    Fixes: lintian: older-debian-watch-file-standard
+    See-also: https://lintian.debian.org/tags/older-debian-watch-file-standard.html
+
+  [ Ondřej Nový ]
+  * d/control: Update Maintainer field with new Debian Python Team
+    contact address.
+  * d/control: Update Vcs-* fields with new Debian Python Team Salsa
+    layout.
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 19 Dec 2020 18:58:34 +0100
+
+python-dbusmock (0.19-1) unstable; urgency=medium
+
+  [ Ondřej Nový ]
+  * Use debhelper-compat instead of debian/compat
+
+  [ Martin Pitt ]
+  * Move packaging VCS to python-team repository.
+    Update Vcs-* tags accordingly. (Closes: #946098)
+  * New upstream version 0.19:
+    - NetworkManager template: Add "StateReason" property and active connection
+      ID (Closes: #947712)
+    - Add low-memory-monitor template
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 09 Jan 2020 20:36:10 +0000
+
+python-dbusmock (0.18.3-2) unstable; urgency=medium
+
+  * Drop Python 2 package.
+    All reverse dependencies got updated to Python 3 now. (Closes: #937688)
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 31 Oct 2019 10:30:11 +0000
+
+python-dbusmock (0.18.3-1) unstable; urgency=medium
+
+  * New upstream version 0.18.3
+  * Bump Standards-Version to 4.4.0. No changes necessary.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 08 Sep 2019 21:05:00 +0000
+
+python-dbusmock (0.18.2-1) unstable; urgency=medium
+
+  * Bump Standards-Version to 4.3.0.  No changes necessary.
+  * New upstream version 0.18.2. Fixes tests for systemd 241.
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 23 Feb 2019 12:45:09 +0000
+
+python-dbusmock (0.18.1-2) unstable; urgency=medium
+
+  * debian/tests: Allow stderr messages.
+    This avoids failing on Python 3.7 deprecation warnings, or messages from
+    e. g. upower.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 13 Nov 2018 09:16:02 +0000
+
+python-dbusmock (0.18.1-1) unstable; urgency=medium
+
+  [ Jelmer Vernooĳ ]
+  * Use secure copyright file specification URI.
+  * Remove unnecessary X-Python{,3}-Version field in debian/control.
+
+  [ Martin Pitt ]
+  * New upstream version 0.18.1
+  * Install upstream NEWS, as per Debian Policy 12.7
+  * Bump Standards-Version to 4.2.1
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 11 Nov 2018 21:11:26 +0000
+
+python-dbusmock (0.18-1) unstable; urgency=medium
+
+  * New upstream release:
+    - Fix tests for systemd 239. (Closes #902602)
+  * Adjust Vcs-* for the move to salsa.debian.org
+  * Bump Standards-Version to 4.1.4.  No changes needed.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 01 Jul 2018 20:38:04 +0000
+
+python-dbusmock (0.17.2-1) unstable; urgency=medium
+
+  * Switch to new upstream release location on GitHub.
+    Update debian/watch and debian/copyright.
+  * Bump debhelper compat to 10
+  * New upstream version 0.17.2
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 01 Mar 2018 22:40:36 +0100
+
+python-dbusmock (0.17.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * debian/control: Move Vcs-Browser to https://
+  * Bump Standards-Version to 4.1.3
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 22 Feb 2018 21:25:52 +0100
+
+python-dbusmock (0.17-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Remove dbus-x11 dependency.  (Closes: #836053)
+  * Bump Standards-Version to 4.1.1. (No changes necessary)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 07 Nov 2017 11:16:23 +0100
+
+python-dbusmock (0.16.9-1) unstable; urgency=medium
+
+  * New upstream bug fix release.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 19 Jun 2017 15:12:15 +0200
+
+python-dbusmock (0.16.8-1) unstable; urgency=medium
+
+  * New upstream release:
+    - bluez5 template tests: Fix failure of test_no_adapters with BlueZ 5.45.
+      (LP: #1696480)
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 12 Jun 2017 13:57:49 +0200
+
+python-dbusmock (0.16.7-1) unstable; urgency=medium
+
+  * New upstream bug fix release to fix bluez5 test failure with current
+    bluez.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 12 Sep 2016 14:15:59 +0200
+
+python-dbusmock (0.16.6-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 19 Jun 2016 21:47:48 +0200
+
+python-dbusmock (0.16.4-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Bump Standards-Version to 3.9.8 (no changes necessary).
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 07 Jun 2016 15:20:36 +0200
+
+python-dbusmock (0.16.3-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Update obsolete Homepage: field.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 14 Dec 2015 13:30:54 +0100
+
+python-dbusmock (0.16.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 09 Dec 2015 08:07:17 +0100
+
+python-dbusmock (0.16.1-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 22 Oct 2015 17:30:57 +0200
+
+python-dbusmock (0.16-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 08 Oct 2015 11:47:27 +0200
+
+python-dbusmock (0.15.3-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 16 Sep 2015 15:19:42 +0200
+
+python-dbusmock (0.15.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 11 Jun 2015 12:54:07 +0200
+
+python-dbusmock (0.15.1-1) unstable; urgency=medium
+
+  * New upstream release.
+    - SECURITY FIX: When loading a template from an arbitrary file through the
+      AddTemplate() D-Bus method call or DBusTestCase.spawn_server_template()
+      Python method, don't create or use Python's *.pyc cached files. By
+      tricking a user into loading a template from a world-writable directory
+      like /tmp, an attacker could run arbitrary code with the user's
+      privileges by putting a crafted .pyc file into that directory.
+
+      Note that this is highly unlikely to actually appear in practice as custom
+      dbusmock templates are usually shipped in project directories, not
+      directly in world-writable directories.
+      (LP: #1453815, CVE-2015-1326)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 12 May 2015 12:49:53 +0200
+
+python-dbusmock (0.15-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 08 May 2015 14:42:32 +0200
+
+python-dbusmock (0.14-2) unstable; urgency=medium
+
+  * debian/control: Drop obsolete XS-Testsuite: field, dpkg adds this
+    automatically now.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 27 Apr 2015 10:06:49 +0200
+
+python-dbusmock (0.14-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 30 Mar 2015 12:04:37 +0200
+
+python-dbusmock (0.13-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 27 Feb 2015 09:11:40 +0100
+
+python-dbusmock (0.12-1) experimental; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 17 Jan 2015 10:48:11 +0100
+
+python-dbusmock (0.11.4-1) unstable; urgency=medium
+
+  * New upstream bug fix release.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 22 Sep 2014 10:26:38 +0200
+
+python-dbusmock (0.11.3-1) unstable; urgency=medium
+
+  * New upstream bug fix release.
+  * Bump Standards-Version to 3.9.6 (no changes necessary).
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 19 Sep 2014 08:50:28 +0200
+
+python-dbusmock (0.11.1-2) unstable; urgency=medium
+
+  * Mark packages as Multi-Arch: foreign for cross-building.
+    (LP: #1357388)
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 18 Aug 2014 08:07:59 +0200
+
+python-dbusmock (0.11.1-1) unstable; urgency=medium
+
+  * New upstream release:
+    - logind template: Fix type of IdleSinceHint property, and add
+      IdleSinceHintMonotonic and IdleActionUSec properties. (LP: #1348437)
+    - NetworkManager template: Add "Devices" and "AccessPoints" properties of
+      NetworkManager 0.9.10. (LP: #1328579)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 08 Aug 2014 08:17:34 +0200
+
+python-dbusmock (0.11-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Package is maintained in git now, adjust Vcs-* tags.
+  * debian/tests/control: Wrap dependencies.
+  * Add bluez test dependency to cover new bluez 4 template.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 24 Jul 2014 07:08:49 +0200
+
+python-dbusmock (0.10.3-1) unstable; urgency=medium
+
+  * New upstream release:
+    - Fix TestCLI.test_template_system test with upower 0.99. (LP: #1330037)
+    - ofono template: Support adding a second modem with AddModem().
+      (LP: #1340590)
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 16 Jul 2014 13:32:03 +0200
+
+python-dbusmock (0.10.1-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Drop ofono-scripts build dependency, it's not in Ubuntu main yet. ofono
+    template will be tested in autopkgtest.
+  * Update Homepage: for new gitorious page.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 30 Jan 2014 15:30:17 +0100
+
+python-dbusmock (0.10-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Add "ofono-scripts | ofono" build/autopkgtest dependency, to cover the new
+    ofono template in Ubuntu. Debian doesn't package the scripts, so the
+    alternative will silently disable this test there.
+  * Add "systemd-services | systemd" autopkgtest dependency to cover the new
+    timedated template.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 18 Dec 2013 19:25:32 +0100
+
+python-dbusmock (0.9.2-1) unstable; urgency=medium
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 13 Dec 2013 07:18:41 +0100
+
+python-dbusmock (0.9.1-1) unstable; urgency=low
+
+  * New upstream bug fix release.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 10 Dec 2013 11:15:31 +0100
+
+python-dbusmock (0.9-1) unstable; urgency=low
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 29 Nov 2013 14:38:52 +0100
+
+python-dbusmock (0.8-1) unstable; urgency=low
+
+  * New upstream release:
+    - Support upower 1.0 API in the upower template. Specify property
+      DaemonVersion >= 0.99 to use it. (LP: #1245955)
+  * Bump Standards-Version to 3.9.5, no changes necessary.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 08 Nov 2013 07:23:49 +0100
+
+python-dbusmock (0.7.2-2) unstable; urgency=low
+
+  * Build a Python 2 package. (LP: #1230141)
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 25 Sep 2013 10:15:34 +0200
+
+python-dbusmock (0.7.2-1) unstable; urgency=low
+
+  * New upstream release:
+    - Add optional "timeout" argument to DBusTestCase.wait_for_bus_object().
+      (LP: #1218318)
+    - DBusTestCase.start_system_bus(): Make the fake bus look more like a real
+      system bus by specifying a configuration file with type "system".
+  * Move to pybuild to greatly simplify debian/rules.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 30 Aug 2013 16:47:32 +0200
+
+python-dbusmock (0.7.1-1) unstable; urgency=low
+
+  * New upstream bug fix release.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 02 Aug 2013 07:11:13 +0200
+
+python-dbusmock (0.7-1) unstable; urgency=low
+
+  * New upstream release.
+  * Drop consolekit build and test dependency, as at some point we want to get
+    rid of it in the archive.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 30 Jul 2013 11:08:30 +0200
+
+python-dbusmock (0.6.2-1) unstable; urgency=low
+
+  [ Martin Pitt ]
+  * New upstream release.
+
+  [ Jakub Wilk ]
+  * Use canonical URIs for Vcs-* fields.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 13 Jun 2013 12:20:42 +0200
+
+python-dbusmock (0.6-1) experimental; urgency=low
+
+  * New upstream release.
+  * debian/rules: Fix clean rule to not call python 2.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 20 Mar 2013 14:16:23 +0100
+
+python-dbusmock (0.5-1) experimental; urgency=low
+
+  * New upstream release.
+  * Add policykit-1 test dependency for covering the new polkitd mock.
+  * Bump Standards-Version to 3.9.4, no changes necessary.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 03 Feb 2013 21:49:23 +0100
+
+python-dbusmock (0.4.0-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 21 Jan 2013 08:31:54 +0100
+
+python-dbusmock (0.3.1-1) experimental; urgency=low
+
+  * New upstream release.
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 07 Jan 2013 08:04:58 +0100
+
+python-dbusmock (0.3-1) experimental; urgency=low
+
+  * New upstream release.
+  * Add libnotify-bin build and test dependencies, for the new
+    notification-daemon template test.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 19 Dec 2012 16:02:31 +0100
+
+python-dbusmock (0.2.2-1) experimental; urgency=low
+
+  * New upstream bug fix release.
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 27 Nov 2012 06:14:08 +0100
+
+python-dbusmock (0.2.1-1) experimental; urgency=low
+
+  * New upstream release.
+  * Add autopkgtest for running the upstream test suite.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 15 Nov 2012 08:13:56 +0100
+
+python-dbusmock (0.1.3-1) experimental; urgency=low
+
+  * Initial release (Closes: #692023)
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 03 Nov 2012 18:07:20 +0100

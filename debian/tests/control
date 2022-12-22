@@ -1,0 +1,10 @@
+Tests: upstream
+Depends: @,
+ upower,
+ network-manager,
+ ofono-scripts | ofono,
+ libnotify-bin,
+ policykit-1,
+ bluez,
+ systemd
+Restrictions: allow-stderr
