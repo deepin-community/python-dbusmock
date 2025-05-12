@@ -1,5 +1,4 @@
-# coding: UTF-8
-'''Mock D-Bus objects for test suites.'''
+"""Mock D-Bus objects for test suites."""
 
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU Lesser General Public License as published by the Free
@@ -7,13 +6,31 @@
 # later version.  See http://www.gnu.org/copyleft/lgpl.html for the full text
 # of the license.
 
-__author__ = 'Martin Pitt'
-__copyright__ = '(c) 2012 Canonical Ltd.'
-__version__ = '0.24.0'
+__author__ = "Martin Pitt"
+__copyright__ = """
+(c) 2012 Canonical Ltd.
+(c) 2017 - 2022 Martin Pitt <martin@piware.de>
+"""
 
-from dbusmock.mockobject import (DBusMockObject, MOCK_IFACE,
-                                 OBJECT_MANAGER_IFACE, get_object, get_objects)
-from dbusmock.testcase import DBusTestCase
 
-__all__ = ['DBusMockObject', 'MOCK_IFACE', 'OBJECT_MANAGER_IFACE',
-           'DBusTestCase', 'get_object', 'get_objects']
+from dbusmock.mockobject import MOCK_IFACE, OBJECT_MANAGER_IFACE, DBusMockObject, get_object, get_objects
+from dbusmock.testcase import BusType, DBusTestCase, PrivateDBus, SpawnedMock
+
+try:
+    # created by setuptools_scm
+    from dbusmock._version import __version__
+except ImportError:
+    __version__ = "0.git"
+
+
+__all__ = [
+    "MOCK_IFACE",
+    "OBJECT_MANAGER_IFACE",
+    "BusType",
+    "DBusMockObject",
+    "DBusTestCase",
+    "PrivateDBus",
+    "SpawnedMock",
+    "get_object",
+    "get_objects",
+]

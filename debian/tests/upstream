@@ -1,6 +1,4 @@
 #!/bin/sh
 set -e
 cd tests
-for f in *.py; do
-    python3 $f
-done
+python3 -m unittest -v
