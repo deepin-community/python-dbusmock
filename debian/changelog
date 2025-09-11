@@ -1,3 +1,317 @@
+python-dbusmock (0.36.0-2) unstable; urgency=medium
+
+  * autopkgtest: Disable notify-send AppArmor profile
+    apparmor 5.0.0~alpha1-0ubuntu2 in Ubuntu questing introduces an AppArmor
+    profile for notify-send. This prevents notify-send from talking to the
+    mock D-Bus and fails the notification-daemon tests. Avoid that by
+    disabling that AA profile for the test. (LP: #2121092)
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 24 Aug 2025 14:49:57 +0000
+
+python-dbusmock (0.36.0-1) experimental; urgency=medium
+
+  * New upstream release:
+    - mockobject: Fix _wrap_in_dbus_variant for Struct and Dict types
+      (thanks Sebastian Wick)
+    - Drop setup.{cfg,py} and RHEL 9 support, move to pybuild (rhbz#2377609)
+    - Drop iio-sensor-proxy tests, the template is broken
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 15 Jul 2025 11:07:46 +0200
+
+python-dbusmock (0.35.0-1) experimental; urgency=medium
+
+  * New upstream release:
+    - modemmanager: Add operator code (thanks Guido Günther)
+    - modemmanager: Allow to set CellBroadcast channel list
+      (thanks Guido Günther)
+  * Bump Standards-Version to 4.7.2.  No changes necessary.
+  * debian/watch: Adjust to python_dbusmock rename
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 23 May 2025 08:51:37 +0000
+
+python-dbusmock (0.34.3-1) unstable; urgency=medium
+
+  * New upstream release:
+    - tests: Relax libnotify expected format for libnotify 0.8.4
+  * Bump Standards-Version to 4.7.1.  No changes necessary.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 21 Feb 2025 08:19:09 +0000
+
+python-dbusmock (0.34.0-1) unstable; urgency=medium
+
+  * New upstream release:
+    - modemmanager: Add cell broadcast messages (thanks Guido Günther)
+    - Move release builds to pybuild for PEP-625 compatibility
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 21 Dec 2024 07:38:20 +0000
+
+python-dbusmock (0.33.0-1) unstable; urgency=medium
+
+  * New upstream release:
+    - templates: Add gsd-rfkill (thanks Guido Günther)
+    - Allow adding objects derived from DBusMockObject (thanks Sebastian Wick)
+    - Drop Python <= 3.7 support (thanks Tomasz Kłoczko)
+  * autopkgtest: Drop ofono test dependency.  ofono fell out of testing. It's
+    still covered in upstream CI.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 11 Dec 2024 00:38:53 +0000
+
+python-dbusmock (0.32.2-2) unstable; urgency=medium
+
+  * Team upload
+  * Cherry-pick fix for bluez 5.79
+
+ -- Jeremy Bícha <jbicha@ubuntu.com>  Tue, 19 Nov 2024 16:10:35 -0500
+
+python-dbusmock (0.32.2-1) unstable; urgency=medium
+
+  * New upstream bug fix release:
+    - all templates: Drop wrong variant wrapping from all properties
+    - tests: Skip TestNetworkManager::test_one_wifi_with_accesspoints
+      with NM ≥ 1.49.3. Fixes hanging autopkgtest.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 03 Oct 2024 09:48:25 +0200
+
+python-dbusmock (0.32.1-2) unstable; urgency=medium
+
+  [ Martin Pitt ]
+  * Add git-buildpackage configuration.
+    In particular, enable pristine-tar (Closes: #1079281)
+  * d/control: Mark test-only build dependencies as such
+
+  [ Simon McVittie ]
+  * d/control: Depend on dbus-daemon instead of dbus, dbus-x11.
+    In 2017 (#836053) the build-dependency and the dependency for python-dbus
+    were swapped from dbus-x11 to dbus, but python3-dbus still depended on
+    dbus-x11. This is no longer necessary.
+    The dbus package sets up dbus-daemon to provide the well-known system
+    bus, but this is unnecessary for dbusmock; all it actually needs is the
+    dbus-daemon executable and enough configuration to run it as a
+    session bus, for which the dbus-daemon package is sufficient
+    (since Debian 12). (Closes: #1079280)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 23 Aug 2024 17:36:19 +0200
+
+python-dbusmock (0.32.1-1) unstable; urgency=medium
+
+  * New upstream release:
+    - ModemManager: Add initial mock (thanks Guido Günther)
+    - bluez5: Add advertising API (thanks Frederik Leonhardt)
+    - Fix loading of libglib on macOS (thanks peturingi)
+  * Bump Standards-Version to 4.7.0. No changes necessary.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 14 Jul 2024 09:20:33 +0200
+
+python-dbusmock (0.31.1-1) unstable; urgency=medium
+
+  * New upstream release:
+    - power_profiles_daemon: Move back to original D-Bus name to avoid
+      breaking compatibility.
+    - Add upower_power_profiles_daemon template for version 0.20 API with new
+      D-Bus name.
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 23 Feb 2024 14:08:40 +0100
+
+python-dbusmock (0.31.0-1) unstable; urgency=medium
+
+  * New upstream release:
+    - power-profiles-daemon: Move to org.freedesktop.UPower.PowerProfiles as
+      in release 0.20.0 (API break!)
+    - NetworkManager: Add stub ipv4/6 properties in AddWiFiConnection
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 23 Feb 2024 09:19:44 +0100
+
+python-dbusmock (0.30.2-2) unstable; urgency=medium
+
+  * autopkgtest: Fix test invocation.
+    Python 3.12's unittest exits with code 5 if all tests are skipped, which
+    is the case for some test files. Run all tests in a single invocation to
+    avoid that. (Closes: #1061825)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 30 Jan 2024 06:54:12 +0100
+
+python-dbusmock (0.30.2-1) unstable; urgency=medium
+
+  * New upstream bug fix release:
+    - bluez5: Fix invalid arguments to PairDevice (thanks Simon McVittie)
+      (Closes: #1057564)
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 31 Dec 2023 07:03:51 +0100
+
+python-dbusmock (0.30.1-1) unstable; urgency=medium
+
+  * New upstream release:
+   - bluez: Clean up static default properties, re-drop PairDevice() class_ parameter
+   - Add pre-commit rules (thanks Peter Hutterer)
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 23 Dec 2023 22:18:05 +0100
+
+python-dbusmock (0.30.0-2) unstable; urgency=medium
+
+  * Add missing python3-pytest autopkgtest dependency (Closes: #1057148)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 01 Dec 2023 06:45:16 +0000
+
+python-dbusmock (0.30.0-1) unstable; urgency=medium
+
+  * New upstream release:
+    - api: Add pytest support and helpers
+    - api: Factor the server spawning into a new SpawnedMock object (thanks
+      Peter Hutterer)
+    - doc: generate sphinx docs on
+      https://martinpitt.github.io/python-dbusmock/ (thanks Peter Hutterer)
+    - cli: Add support for running custom commands on the mock environment
+      (thanks Marco Trevisan)
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 30 Nov 2023 07:27:49 +0000
+
+python-dbusmock (0.29.1-2) unstable; urgency=medium
+
+  * Ignore .egg-info/ changes during package cleaning.
+    The egg-info is rebuilt during binary package build, with a different
+    setuptools than the upstream release. This failed building a source
+    package after a binary build. (Closes: #1047543)
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 18 Aug 2023 16:45:11 +0200
+
+python-dbusmock (0.29.1-1) unstable; urgency=medium
+
+  * New upstream version 0.29.0:
+    - Support loading templates from XDG_DATA_DIRS
+    - iio-sensors-proxy: Throw proper D-Bus errors instead of Python Exception
+  * New upstream version 0.29.1:
+    - Test fixes (thanks Marco Trevisan)
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 27 Jul 2023 05:08:50 +0000
+
+python-dbusmock (0.28.7-1) unstable; urgency=medium
+
+  * New upstream bug fix release:
+    - blue5-obex template: Fix OBEX PullAll (thanks Jan Alexander Steffens)
+    - power_profiles template: Fix Actions property type (thanks Jonas Ådahl)
+    - README: Explain container tests and how to debug them
+  * autopkgtest: Update policykit-1 dependency.
+    Primarily depend on polkitd now. Keep the transitional policykit-1 as
+    alternative to keep the package working on Debian 11. (Closes: #1025640)
+  * Bump Standards-Version to 4.6.2.  No changes necessary.
+
+ -- Martin Pitt <mpitt@debian.org>  Thu, 05 Jan 2023 14:57:52 +0100
+
+python-dbusmock (0.28.6-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Allow sending signals from a specific path (thanks Peter Hutterer)
+    - logind: Adjust for systemd 252
+    - Use setuptools_scm to determine version
+  * debian/copyright: Update to current upstream copyrights
+  * debian/watch: Move to PyPI. GitHub's release page became obfuscated and
+    cannot be processed by uscan any more.
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 12 Oct 2022 07:31:35 +0200
+
+python-dbusmock (0.28.4-1) unstable; urgency=medium
+
+  * New upstream version:
+    - setup.py: Fix ModuleNotFoundError
+    - ofono template: Fix conversion to f-strings (Closes: #1015286)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 19 Jul 2022 14:39:51 +0200
+
+python-dbusmock (0.28.3-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Bring back dbusmock.__version__
+  * Go back to building with setup.py
+    pyproject is still way too brittle for production. Upstream CI went back
+    to setup.py as well.
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 17 Jul 2022 13:47:42 +0200
+
+python-dbusmock (0.28.2-1) unstable; urgency=medium
+
+  * New upstream version 0.28.1:
+    - Again works on RHEL/CentOS 8 (0.27 broke there)
+    - Avoid glib GI dependency for main dbusmock, for running in virtualenv
+  * New upstream version 0.28.2:
+    - Dynamically compute version with setuptools-scm
+    - tests: Adjust to libnotify 0.8 (Closes: #1015068)
+    - tests: Only run pylint on current Fedora release
+  * Bump Standards-Version to 4.6.1. No changes necessary.
+  * Adjust build dependencies for upstream moving to pyproject
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 16 Jul 2022 22:09:57 +0200
+
+python-dbusmock (0.28.0-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Drop unmaintained and broken accountsservice template
+    - testcase: Throw an error when spawning a well-known name that exists
+      (thanks Benjamin Berg)
+    - mockobject: Allow sending signals with extra details
+      (thanks Peter Hutterer)
+
+ -- Martin Pitt <mpitt@debian.org>  Sun, 19 Jun 2022 15:33:05 +0200
+
+python-dbusmock (0.27.5-1) unstable; urgency=medium
+
+  * New upstream version:
+    - bluez and accountsservice templates: Drop default arguments from D-Bus
+      methods (thanks Simon McVittie) (Closes: #1008941)
+
+ -- Martin Pitt <mpitt@debian.org>  Tue, 05 Apr 2022 07:55:22 +0200
+
+python-dbusmock (0.27.4-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Fix D-Bus signature detection regression from 0.27.0 (thanks Peter
+      Hutterer)
+
+ -- Martin Pitt <mpitt@debian.org>  Mon, 04 Apr 2022 16:08:15 +0200
+
+python-dbusmock (0.27.3-1) unstable; urgency=medium
+
+  * New upstream version:
+    - Do not register standard session service directories, add API to enable
+      selected services (thanks Benjamin Berg)
+    - Log static method calls from templates (thanks Peter Hutterer)
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 02 Apr 2022 09:03:44 +0200
+
+python-dbusmock (0.26.1-2) unstable; urgency=medium
+
+  * debian/python3-dbusmock.docs: Update for README rst → md change
+    (Closes: #1006465)
+
+ -- Martin Pitt <mpitt@debian.org>  Wed, 09 Mar 2022 13:03:48 +0100
+
+python-dbusmock (0.26.1-1) unstable; urgency=medium
+
+  [ deb-scrub-obsolete ]
+  * Remove constraints unnecessary since buster
+    * Build-Depends-Indep: Drop versioned constraint on gir1.2-glib-2.0.
+    * python3-dbusmock: Drop versioned constraint on gir1.2-glib-2.0 in Depends.
+    Changes-By: deb-scrub-obsolete
+
+  [ Martin Pitt ]
+  * New upstream version 0.26.{0,1}:
+    - logind template: Add locking API (thanks Andy Holmes)
+    - bluez5 template: Add RemoveDevice() and RemoveAdapterWithDevices() methods,
+    - fix properties (thanks Bastien Nocera)
+    - Documentation improvements, particularly wrt. raising errors
+    - Fix README content type to Markdown, to fix releasing to PyPi
+
+ -- Martin Pitt <mpitt@debian.org>  Fri, 25 Feb 2022 13:07:30 +0100
+
+python-dbusmock (0.25.0-1) unstable; urgency=medium
+
+  * New upstream version 0.25.0:
+    - bluez template: Implement adapter discovery, connect, disconnect, and
+      removal (thanks Bastien Nocera)
+    - Fix changing array properties (thanks Jonas Ådahl)
+    - Fix CLI upower tests (thanks Marco Trevisan)
+
+ -- Martin Pitt <mpitt@debian.org>  Sat, 25 Dec 2021 07:46:28 +0100
+
 python-dbusmock (0.24.1-1) unstable; urgency=medium
 
   * New upstream version 0.24.1:

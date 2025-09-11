@@ -1,10 +1,10 @@
 Tests: upstream
 Depends: @,
+ python3-pytest,
  upower,
  network-manager,
- ofono-scripts | ofono,
  libnotify-bin,
- policykit-1,
+ polkitd | policykit-1,
  bluez,
  systemd
-Restrictions: allow-stderr
+Restrictions: allow-stderr, needs-root
