@@ -1,0 +1,2 @@
+# binary package build uses different setuptools than upstream release
+extend-diff-ignore = "\.egg-info/"
